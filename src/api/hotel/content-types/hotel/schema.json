@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hotels",
+  "info": {
+    "singularName": "hotel",
+    "pluralName": "hotels",
+    "displayName": "Hotels"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "booking": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::booking.booking",
+      "inversedBy": "hotels"
+    },
+    "city": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "checkIn": {
+      "type": "date"
+    },
+    "checkOut": {
+      "type": "date"
+    },
+    "costPerNight": {
+      "type": "decimal"
+    }
+  }
+}

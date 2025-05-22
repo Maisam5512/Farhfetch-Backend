@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_product_colors",
+  "info": {
+    "displayName": "productColor"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "hexCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payments"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "booking": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::booking.booking",
+      "inversedBy": "payments"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "method": {
+      "type": "string"
+    }
+  }
+}

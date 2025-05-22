@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "originalPrice": {
+      "type": "decimal"
+    },
+    "discountedPrice": {
+      "type": "decimal"
+    },
+    "discountPercentage": {
+      "type": "integer"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "estimatedDeliveryMin": {
+      "type": "date"
+    },
+    "estimatedDeliveryMax": {
+      "type": "date"
+    },
+    "avaliableColors": {
+      "displayName": "productColor",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.product-color"
+    },
+    "sizes": {
+      "type": "json"
+    }
+  }
+}

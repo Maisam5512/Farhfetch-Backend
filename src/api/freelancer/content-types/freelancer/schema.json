@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "freelancers",
+  "info": {
+    "singularName": "freelancer",
+    "pluralName": "freelancers",
+    "displayName": "Freelancer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "bio": {
+      "type": "text"
+    },
+    "skillname": {
+      "displayName": "skill",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.skill"
+    },
+    "hourlyRate": {
+      "type": "decimal"
+    },
+    "experienceYears": {
+      "type": "integer"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "portfolioItem": {
+      "displayName": "portfolio",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.portfolio"
+    }
+  }
+}

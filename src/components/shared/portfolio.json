@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_portfolios",
+  "info": {
+    "displayName": "portfolio"
+  },
+  "options": {},
+  "attributes": {
+    "projectName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
