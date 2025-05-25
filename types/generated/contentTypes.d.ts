@@ -625,6 +625,39 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHomeSectionHomeSection extends Struct.CollectionTypeSchema {
+  collectionName: 'home_sections';
+  info: {
+    displayName: 'Home-section';
+    pluralName: 'home-sections';
+    singularName: 'home-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button_text: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    layout: Schema.Attribute.Enumeration<['left', 'right']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-section.home-section'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
   collectionName: 'hotels';
   info: {
@@ -1333,6 +1366,7 @@ declare module '@strapi/strapi' {
       'api::color.color': ApiColorColor;
       'api::freelancer.freelancer': ApiFreelancerFreelancer;
       'api::global.global': ApiGlobalGlobal;
+      'api::home-section.home-section': ApiHomeSectionHomeSection;
       'api::hotel.hotel': ApiHotelHotel;
       'api::item.item': ApiItemItem;
       'api::order.order': ApiOrderOrder;

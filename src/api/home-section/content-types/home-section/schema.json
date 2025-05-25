@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_sections",
+  "info": {
+    "singularName": "home-section",
+    "pluralName": "home-sections",
+    "displayName": "Home-section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "button_text": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
