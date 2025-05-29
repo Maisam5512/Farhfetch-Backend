@@ -469,33 +469,34 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
-  collectionName: 'bookings';
+export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
+  collectionName: 'banners';
   info: {
-    displayName: 'Bookings';
-    pluralName: 'bookings';
-    singularName: 'booking';
+    description: '';
+    displayName: 'Banner';
+    pluralName: 'banners';
+    singularName: 'banner';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    bookingName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    folderNumber: Schema.Attribute.String;
-    hotels: Schema.Attribute.Relation<'oneToMany', 'api::hotel.hotel'>;
+    ctaText: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::booking.booking'
+      'api::banner.banner'
     > &
       Schema.Attribute.Private;
-    payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
+    position: Schema.Attribute.Enumeration<['left', 'right']>;
     publishedAt: Schema.Attribute.DateTime;
-    totalCost: Schema.Attribute.Decimal;
-    travelers: Schema.Attribute.Relation<'oneToMany', 'api::traveler.traveler'>;
+    relation: Schema.Attribute.Enumeration<['men', 'women', 'kids']>;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -517,7 +518,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    item: Schema.Attribute.Relation<'oneToOne', 'api::item.item'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -526,6 +526,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -669,7 +670,6 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    booking: Schema.Attribute.Relation<'manyToOne', 'api::booking.booking'>;
     checkIn: Schema.Attribute.Date;
     checkOut: Schema.Attribute.Date;
     city: Schema.Attribute.String;
@@ -700,15 +700,12 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::item.item'> &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    price: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -756,7 +753,6 @@ export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
   };
   attributes: {
     amount: Schema.Attribute.Decimal;
-    booking: Schema.Attribute.Relation<'manyToOne', 'api::booking.booking'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -786,7 +782,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    avaliableColors: Schema.Attribute.Component<'shared.product-color', true>;
+    avaliableIn: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     brand: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -809,6 +808,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     originalPrice: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    relation: Schema.Attribute.Enumeration<['men', 'women', 'kids']>;
     sizes: Schema.Attribute.JSON;
     slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
@@ -828,7 +828,6 @@ export interface ApiTravelerTraveler extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    booking: Schema.Attribute.Relation<'manyToOne', 'api::booking.booking'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1361,7 +1360,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
-      'api::booking.booking': ApiBookingBooking;
+      'api::banner.banner': ApiBannerBanner;
       'api::category.category': ApiCategoryCategory;
       'api::color.color': ApiColorColor;
       'api::freelancer.freelancer': ApiFreelancerFreelancer;

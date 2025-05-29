@@ -10,12 +10,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "booking": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::booking.booking",
-      "inversedBy": "travelers"
-    },
     "title": {
       "type": "string"
     },

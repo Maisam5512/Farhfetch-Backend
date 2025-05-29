@@ -49,14 +49,26 @@
     "estimatedDeliveryMax": {
       "type": "date"
     },
-    "avaliableColors": {
-      "displayName": "productColor",
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.product-color"
-    },
     "sizes": {
       "type": "json"
+    },
+    "avaliableIn": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "relation": {
+      "type": "enumeration",
+      "enum": [
+        "men",
+        "women",
+        "kids"
+      ]
     }
   }
 }

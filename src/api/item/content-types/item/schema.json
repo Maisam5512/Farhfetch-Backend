@@ -10,18 +10,5 @@
   "options": {
     "draftAndPublish": true
   },
-  "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "price": {
-      "type": "string"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category",
-      "inversedBy": "item"
-    }
-  }
+  "attributes": {}
 }
