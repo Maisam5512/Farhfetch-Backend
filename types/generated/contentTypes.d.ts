@@ -807,6 +807,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     originalPrice: Schema.Attribute.Decimal;
+    productDetail: Schema.Attribute.Component<'shared.detail', true>;
     publishedAt: Schema.Attribute.DateTime;
     relation: Schema.Attribute.Enumeration<['men', 'women', 'kids']>;
     sizes: Schema.Attribute.JSON;

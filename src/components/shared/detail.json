@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_details",
+  "info": {
+    "displayName": "Detail"
+  },
+  "options": {},
+  "attributes": {
+    "composition_outer": {
+      "type": "string"
+    },
+    "composition_lining": {
+      "type": "string"
+    },
+    "washing_instructions": {
+      "type": "string"
+    },
+    "wearing_info": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "highlights": {
+      "type": "text"
+    }
+  }
+}

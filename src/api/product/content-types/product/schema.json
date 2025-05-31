@@ -53,14 +53,15 @@
       "type": "json"
     },
     "avaliableIn": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "relation": {
       "type": "enumeration",
@@ -69,6 +70,12 @@
         "women",
         "kids"
       ]
+    },
+    "productDetail": {
+      "displayName": "Detail",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.detail"
     }
   }
 }
